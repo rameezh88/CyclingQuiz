@@ -6,11 +6,14 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import RootNavigator from './src/navigation';
+
+const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   const backgroundStyle = {
@@ -19,18 +22,17 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <NavigationContainer>
-      <SafeAreaView style={backgroundStyle}>
-        {/* <View style={{flex: 1, backgroundColor: '#fff'}}> */}
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        {/* <HomeScreen /> */}
-        <RootNavigator />
-        {/* </View> */}
-      </SafeAreaView>
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar
+            barStyle="dark-content"
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+          <RootNavigator />
+        </SafeAreaView>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
