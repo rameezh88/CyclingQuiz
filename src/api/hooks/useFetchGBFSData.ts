@@ -1,18 +1,24 @@
 import {useQueries} from '@tanstack/react-query';
-import {GBFS_AUTODISCOVERY_URLS, fetchGBFSData} from '..';
+import {fetchGBFSData} from '..';
 import {useEffect} from 'react';
+import {GBFS_AREAS} from '../constants';
 
 const useFetchGBFSData = () => {
   const {data, isLoading} = useQueries({
-    queries: GBFS_AUTODISCOVERY_URLS.map(autodiscoveryUrl => {
+    queries: GBFS_AREAS.map(area => {
       return {
-        queryKey: ['gbfs_data', autodiscoveryUrl],
-        queryFn: () => fetchGBFSData(autodiscoveryUrl),
+        queryKey: ['gbfs_data', area.city],
+        queryFn: () => fetchGBFSData(area.url),
+        staleTime: 24 * 60 * 60 * 1000, // 24 hours stale time
       };
     }),
     combine: results => {
       return {
-        data: results.map(result => result.data?.data),
+        // I'd change this to be more generic for the particular locale of the user
+        data: results.map((result, index) => ({
+          ...result.data?.data?.data?.en?.feeds,
+          city: GBFS_AREAS[index].city,
+        })),
         isLoading: results.some(result => result.isLoading),
       };
     },
