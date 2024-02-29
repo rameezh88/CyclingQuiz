@@ -19,7 +19,7 @@ export const quizResultsReducer = (state: any, action: any) => {
     case 'SET_WON':
       return {
         ...state,
-        won: action.won,
+        won: true,
       };
     default:
       return state;

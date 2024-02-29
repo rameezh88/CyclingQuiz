@@ -7,9 +7,12 @@ import QuizQuestionComponent from '../../components/QuizQuestion';
 import useGetQuizQuestion from '../../hooks/useGetQuizQuestion';
 import {quizResultsReducer} from './reducer';
 import {CloseButton, Container, Header, HeaderLeftContainer} from './styles';
+import {useDispatch} from 'react-redux';
+import {addAttempt} from '../../redux/reducers/quiz';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [seconds, setSeconds] = useState(10);
   const [quizResults, quizResultsDispatch] = useReducer(quizResultsReducer, {
     points: 0,
@@ -39,7 +42,16 @@ const QuizScreen = () => {
   useEffect(() => {
     if (seconds === 0) {
       // Quiz ended
-      // console.log('Quiz ended', quizResults.points);
+      if (quizResults.points >= 0) {
+        quizResultsDispatch({type: 'SET_WON'});
+      }
+
+      dispatch(
+        addAttempt({
+          ...quizResults,
+          won: quizResults.points >= 0,
+        }),
+      );
     }
   }, [seconds, quizResults.points]);
 
