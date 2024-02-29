@@ -1,20 +1,21 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {QuizAnswer} from '../../common/types';
 import IconText from '../../components/IconText';
 import QuizQuestionComponent from '../../components/QuizQuestion';
 import useGetQuizQuestion from '../../hooks/useGetQuizQuestion';
+import {quizResultsReducer} from './reducer';
 import {CloseButton, Container, Header, HeaderLeftContainer} from './styles';
-import {QuizAnswer} from '../../common/types';
-import {
-  CORRECT_ANSWER_POINTS,
-  WRONG_ANSWER_POINTS,
-} from '../../api/utils/constants';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
-  const [points, setPoints] = useState(0);
   const [seconds, setSeconds] = useState(10);
+  const [quizResults, quizResultsDispatch] = useReducer(quizResultsReducer, {
+    points: 0,
+    won: false,
+    answeredQuestions: [],
+  });
 
   const {currentQuizQuestion, getNextQuestion} = useGetQuizQuestion();
 
@@ -38,9 +39,9 @@ const QuizScreen = () => {
   useEffect(() => {
     if (seconds === 0) {
       // Quiz ended
-      // console.log('Quiz ended');
+      // console.log('Quiz ended', quizResults.points);
     }
-  }, [seconds]);
+  }, [seconds, quizResults.points]);
 
   const handleClose = () => {
     navigation.goBack();
@@ -51,12 +52,11 @@ const QuizScreen = () => {
     .padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
 
   const onAnswerSelected = (answer: QuizAnswer) => {
-    // console.log('selecting answer', answer);
-    setPoints(prevPoints =>
-      answer.correct
-        ? prevPoints + CORRECT_ANSWER_POINTS
-        : prevPoints - WRONG_ANSWER_POINTS,
-    );
+    quizResultsDispatch({
+      type: 'ANSWER_SELECTED',
+      question: currentQuizQuestion?.question,
+      selectedAnswer: answer,
+    });
 
     setTimeout(() => {
       getNextQuestion();
@@ -70,7 +70,7 @@ const QuizScreen = () => {
           <IconText iconName="time-outline" text={formattedCountdownTime} />
           <IconText
             iconName="star-outline"
-            text={`${points}`}
+            text={`${quizResults.points}`}
             iconColor="gold"
           />
         </HeaderLeftContainer>

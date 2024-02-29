@@ -24,3 +24,14 @@ export interface QuizAnswer {
   answer: string | number;
   correct: boolean;
 }
+
+export interface QuizResultItem {
+  question: string;
+  selectedAnswer: QuizAnswer;
+}
+
+export interface QuizResults {
+  points: number;
+  won: boolean;
+  answeredQuestions: QuizResultItem[];
+}
