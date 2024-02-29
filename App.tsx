@@ -12,6 +12,8 @@ import {StatusBar} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import RootNavigator from './src/navigation';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
 
 const queryClient = new QueryClient();
 
@@ -22,17 +24,19 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <SafeAreaView style={backgroundStyle}>
-          <StatusBar
-            barStyle="dark-content"
-            backgroundColor={backgroundStyle.backgroundColor}
-          />
-          <RootNavigator />
-        </SafeAreaView>
-      </NavigationContainer>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <SafeAreaView style={backgroundStyle}>
+            <StatusBar
+              barStyle="dark-content"
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <RootNavigator />
+          </SafeAreaView>
+        </NavigationContainer>
+      </QueryClientProvider>
+    </Provider>
   );
 }
 

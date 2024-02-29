@@ -2,9 +2,13 @@ import {useQueries} from '@tanstack/react-query';
 import {fetchGBFSData} from '..';
 import {useEffect} from 'react';
 import {GBFS_AREAS} from '../constants';
+import {setAllServices} from '../../redux/reducers/gbfs';
+import {useDispatch} from 'react-redux';
 
 const useFetchGBFSData = () => {
-  const {data, isLoading} = useQueries({
+  const dispatch = useDispatch();
+
+  const {data} = useQueries({
     queries: GBFS_AREAS.map(area => {
       return {
         queryKey: ['gbfs_data', area.city],
@@ -16,22 +20,18 @@ const useFetchGBFSData = () => {
       return {
         // I'd change this to be more generic for the particular locale of the user
         data: results.map((result, index) => ({
-          ...result.data?.data?.data?.en?.feeds,
+          ...result.data?.data?.data?.en,
           city: GBFS_AREAS[index].city,
         })),
-        isLoading: results.some(result => result.isLoading),
       };
     },
   });
 
   useEffect(() => {
-    // if (isLoading) {
-    //   console.log('GBFS data is loading..', isLoading);
-    // }
-    // if (data) {
-    //   console.log('GBFS data:', data);
-    // }
-  }, [data, isLoading]);
+    if (data) {
+      dispatch(setAllServices(data));
+    }
+  }, [data]);
 };
 
 export default useFetchGBFSData;

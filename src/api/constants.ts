@@ -12,9 +12,3 @@ export const GBFS_AREAS = [
     url: 'https://mds-global-cbr.neuron-mobility.com/gbfs/2/',
   },
 ];
-
-export enum GBFSFeedNames {
-  'system_information',
-  'free_bike_status',
-  'station_status',
-}

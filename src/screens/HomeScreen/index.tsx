@@ -1,6 +1,6 @@
+import React from 'react';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import React from 'react';
 import {Container, Placeholder, StartNewQuizButton} from './styles';
 import {RootStackParamList} from '../../navigation';
 import useFetchGBFSData from '../../api/hooks/useFetchGBFSData';
