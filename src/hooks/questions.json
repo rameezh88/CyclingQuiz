@@ -1,0 +1,128 @@
+[
+  {
+    "question": "What is the capital of Japan?",
+    "answers": [
+      {"answer": "Tokyo", "correct": true},
+      {"answer": "Osaka", "correct": false},
+      {"answer": "Kyoto", "correct": false},
+      {"answer": "Nagoya", "correct": false}
+    ]
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "answers": [
+      {"answer": "Mars", "correct": true},
+      {"answer": "Venus", "correct": false},
+      {"answer": "Jupiter", "correct": false},
+      {"answer": "Saturn", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the largest ocean on Earth?",
+    "answers": [
+      {"answer": "Pacific Ocean", "correct": true},
+      {"answer": "Atlantic Ocean", "correct": false},
+      {"answer": "Indian Ocean", "correct": false},
+      {"answer": "Arctic Ocean", "correct": false}
+    ]
+  },
+  {
+    "question": "Who wrote the play 'Romeo and Juliet'?",
+    "answers": [
+      {"answer": "William Shakespeare", "correct": true},
+      {"answer": "Jane Austen", "correct": false},
+      {"answer": "Charles Dickens", "correct": false},
+      {"answer": "Leo Tolstoy", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the chemical symbol for water?",
+    "answers": [
+      {"answer": "H2O", "correct": true},
+      {"answer": "CO2", "correct": false},
+      {"answer": "O2", "correct": false},
+      {"answer": "NaCl", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the tallest mountain in the world?",
+    "answers": [
+      {"answer": "Mount Everest", "correct": true},
+      {"answer": "K2", "correct": false},
+      {"answer": "Kangchenjunga", "correct": false},
+      {"answer": "Lhotse", "correct": false}
+    ]
+  },
+  {
+    "question": "Who painted the Mona Lisa?",
+    "answers": [
+      {"answer": "Leonardo da Vinci", "correct": true},
+      {"answer": "Vincent van Gogh", "correct": false},
+      {"answer": "Pablo Picasso", "correct": false},
+      {"answer": "Michelangelo", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the largest mammal in the world?",
+    "answers": [
+      {"answer": "Blue Whale", "correct": true},
+      {"answer": "African Elephant", "correct": false},
+      {"answer": "Giraffe", "correct": false},
+      {"answer": "Hippopotamus", "correct": false}
+    ]
+  },
+  {
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "answers": [
+      {"answer": "Japan", "correct": true},
+      {"answer": "China", "correct": false},
+      {"answer": "South Korea", "correct": false},
+      {"answer": "Thailand", "correct": false}
+    ]
+  },
+  {
+    "question": "Who is the author of 'To Kill a Mockingbird'?",
+    "answers": [
+      {"answer": "Harper Lee", "correct": true},
+      {"answer": "Mark Twain", "correct": false},
+      {"answer": "J.K. Rowling", "correct": false},
+      {"answer": "Ernest Hemingway", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "answers": [
+      {"answer": "Au", "correct": true},
+      {"answer": "Ag", "correct": false},
+      {"answer": "Fe", "correct": false},
+      {"answer": "Cu", "correct": false}
+    ]
+  },
+  {
+    "question": "Which city is known as the City of Love?",
+    "answers": [
+      {"answer": "Paris", "correct": true},
+      {"answer": "Venice", "correct": false},
+      {"answer": "Rome", "correct": false},
+      {"answer": "Vienna", "correct": false}
+    ]
+  },
+  {
+    "question": "Who discovered penicillin?",
+    "answers": [
+      {"answer": "Alexander Fleming", "correct": true},
+      {"answer": "Louis Pasteur", "correct": false},
+      {"answer": "Jonas Salk", "correct": false},
+      {"answer": "Edward Jenner", "correct": false}
+    ]
+  },
+  {
+    "question": "What is the capital of Australia?",
+    "answers": [
+      {"answer": "Canberra", "correct": true},
+      {"answer": "Sydney", "correct": false},
+      {"answer": "Melbourne", "correct": false},
+      {"answer": "Brisbane", "correct": false}
+    ]
+  }
+]
