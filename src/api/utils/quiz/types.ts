@@ -6,7 +6,6 @@ export type QuizQuestionGeneratorFunction = (
 ) => Promise<QuizQuestion | null>;
 
 export type QuizQuestionGenerator = {
-  type: number | string;
   text: string;
   options?: Array<'cities' | 'city' | 'batteryPercentage'>;
   quizQuestionGeneratorFunction: QuizQuestionGeneratorFunction;

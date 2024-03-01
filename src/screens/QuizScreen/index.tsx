@@ -17,7 +17,7 @@ import {Container, LoadingText, TopContainer} from './styles';
 const QuizScreen = () => {
   const navigation = useNavigation<StackNavigationProp<QuizStackParamList>>();
   const dispatch = useDispatch();
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(30);
   const [quizResults, quizResultsDispatch] = useReducer(quizResultsReducer, {
     points: 0,
     won: false,

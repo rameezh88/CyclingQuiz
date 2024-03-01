@@ -1,5 +1,6 @@
-import {shuffleArray} from '..';
+import {formatString, shuffleArray} from '..';
 import {QuizAnswer} from '../../../common/types';
+import generateDisabledBikesQuestion from './generateDisabledBikesQuestion';
 import generateNumberOfBikesQuestion from './generateNumberOfBikesQuestion';
 import {QuizQuestionGenerator} from './types';
 
@@ -12,11 +13,15 @@ import {QuizQuestionGenerator} from './types';
 // - On an average, what is the distance between stations in `area_name`?
 
 export const quizQuestionGeneratorTemplates: Array<QuizQuestionGenerator> = [
+  // {
+  //   text: 'How many total bikes are available to rent in the following cities right now: {{cities}}?',
+  //   options: ['cities'],
+  //   quizQuestionGeneratorFunction: generateNumberOfBikesQuestion,
+  // },
   {
-    type: 1,
-    text: 'How many total rental bikes are available to rent in the following cities right now: {{cities}}?',
+    text: 'How many bikes in the following cities are disabled: {{cities}}?',
     options: ['cities'],
-    quizQuestionGeneratorFunction: generateNumberOfBikesQuestion,
+    quizQuestionGeneratorFunction: generateDisabledBikesQuestion,
   },
 ];
 
@@ -41,3 +46,17 @@ export function generateAnswers(baseNumber: number) {
 
   return shuffleArray(answers);
 }
+
+export const getFormattedQuizQuestion = (
+  questionText: string | undefined,
+  answerValue: number,
+  questionFormattingOptions: any,
+) => {
+  const question = questionText
+    ? formatString(questionText, questionFormattingOptions)
+    : '';
+  return {
+    question,
+    answers: generateAnswers(answerValue),
+  };
+};

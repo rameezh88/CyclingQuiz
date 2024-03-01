@@ -1,14 +1,20 @@
 import axios from 'axios';
-import {GBFSFeedType} from '../../../common/types';
+import {GBFSFeedNames, GBFSFeedType} from '../../../common/types';
 
-export function fetchStationData(service: GBFSFeedType) {
-  const stationStatusUrl = service.feeds.find(
-    (feed: any) => feed.name === 'station_status',
-  )?.url;
+function fetchData(service: GBFSFeedType, feedName: GBFSFeedNames) {
+  const url = service.feeds.find((feed: any) => feed.name === feedName)?.url;
 
-  if (stationStatusUrl) {
-    return axios.get(stationStatusUrl).then(response => response.data);
+  if (url) {
+    return axios.get(url).then(response => response.data);
   }
 
   return null;
+}
+
+export function fetchStationStatusData(service: GBFSFeedType) {
+  return fetchData(service, 'station_status');
+}
+
+export function fetchFreeBikeStatusData(service: GBFSFeedType) {
+  return fetchData(service, 'free_bike_status');
 }
