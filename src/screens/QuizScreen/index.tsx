@@ -48,17 +48,19 @@ const QuizScreen = () => {
   useEffect(() => {
     if (seconds === 0) {
       // Quiz ended
-      if (quizResults.points >= 0) {
-        quizResultsDispatch({type: 'SET_WON'});
-      }
+      if (quizResults.answeredQuestions.length > 0) {
+        if (quizResults.points >= 0) {
+          quizResultsDispatch({type: 'SET_WON'});
+        }
 
-      dispatch(
-        addAttempt({
-          ...quizResults,
-          id: makeId(5),
-          won: quizResults.points >= 0,
-        }),
-      );
+        dispatch(
+          addAttempt({
+            ...quizResults,
+            id: makeId(5),
+            won: quizResults.points >= 0,
+          }),
+        );
+      }
 
       setTimeout(() => {
         navigation.navigate('QuizDone');
