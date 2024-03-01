@@ -1,19 +1,28 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+import {getRandomQuizGenerator} from '../api/utils/quiz';
 import {QuizQuestion} from '../common/types';
-import questions from './questions.json';
-
-function getRandomElement(array) {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
-}
+import {selectAllServices} from '../redux/reducers/gbfs/selectors';
 
 const useGetQuizQuestion = () => {
   const [currentQuizQuestion, setCurrentQuizQuestion] =
     useState<QuizQuestion | null>(null);
+  const allGbfsServices = useSelector(selectAllServices);
+
+  useEffect(() => {
+    getNextQuestion();
+  }, [allGbfsServices]);
 
   const getNextQuestion = () => {
-    // console.log('getNextQuestion');
-    setCurrentQuizQuestion(getRandomElement(questions));
+    const {
+      text,
+      options,
+      quizQuestionGeneratorFunction: generateQuestion,
+    } = getRandomQuizGenerator();
+
+    generateQuestion({text, options}, allGbfsServices).then(question => {
+      setCurrentQuizQuestion(question);
+    });
   };
 
   return {
