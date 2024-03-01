@@ -1,4 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useEffect, useReducer, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {makeId} from '../../api/utils';
@@ -8,12 +9,13 @@ import CloseButton from '../../components/CloseButton';
 import IconText from '../../components/IconText';
 import QuizQuestionComponent from '../../components/QuizQuestion';
 import useGetQuizQuestion from '../../hooks/useGetQuizQuestion';
+import {QuizStackParamList} from '../../navigation/QuizModalNavigator';
 import {addAttempt} from '../../redux/reducers/quiz';
 import {quizResultsReducer} from './reducer';
 import {Container, LoadingText, TopContainer} from './styles';
 
 const QuizScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<QuizStackParamList>>();
   const dispatch = useDispatch();
   const [seconds, setSeconds] = useState(10);
   const [quizResults, quizResultsDispatch] = useReducer(quizResultsReducer, {

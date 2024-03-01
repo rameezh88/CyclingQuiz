@@ -8,9 +8,11 @@ import QuizAttemptHeaderItem from '../../components/QuizAttemptHeaderItem';
 import QuizAttemptListItem from '../../components/QuizAttemptListItem';
 import {selectQuizAttempts} from '../../redux/reducers/quiz/selectors';
 import {Container} from './styles';
+import {RootStackParamList} from '../../navigation';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const QuizDoneScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const attempts = useSelector(selectQuizAttempts);
 
   const handleClose = () => {

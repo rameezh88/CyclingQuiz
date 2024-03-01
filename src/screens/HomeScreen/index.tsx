@@ -7,9 +7,11 @@ import {selectQuizAttempts} from '../../redux/reducers/quiz/selectors';
 import {Container, Placeholder, StartNewQuizButton} from './styles';
 import QuizAttemptListItem from '../../components/QuizAttemptListItem';
 import {FlashList} from '@shopify/flash-list';
+import {RootStackParamList} from '../../navigation';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const attempts = useSelector(selectQuizAttempts);
 
   useFetchGBFSData();
