@@ -1,15 +1,16 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useReducer, useState} from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useDispatch} from 'react-redux';
+import {makeId} from '../../api/utils';
+import {Header, HeaderLeftContainer} from '../../common/styles';
 import {QuizAnswer} from '../../common/types';
+import CloseButton from '../../components/CloseButton';
 import IconText from '../../components/IconText';
 import QuizQuestionComponent from '../../components/QuizQuestion';
 import useGetQuizQuestion from '../../hooks/useGetQuizQuestion';
-import {quizResultsReducer} from './reducer';
-import {CloseButton, Container, Header, HeaderLeftContainer} from './styles';
-import {useDispatch} from 'react-redux';
 import {addAttempt} from '../../redux/reducers/quiz';
-import {makeId} from '../../api/utils';
+import {quizResultsReducer} from './reducer';
+import {Container} from './styles';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
@@ -54,6 +55,10 @@ const QuizScreen = () => {
           won: quizResults.points >= 0,
         }),
       );
+
+      setTimeout(() => {
+        navigation.navigate('QuizDone');
+      }, 150);
     }
   }, [seconds, quizResults.points]);
 
@@ -88,9 +93,7 @@ const QuizScreen = () => {
             iconColor="gold"
           />
         </HeaderLeftContainer>
-        <CloseButton onPress={handleClose}>
-          <Ionicons name="close" size={32} color="black" />
-        </CloseButton>
+        <CloseButton handleClose={handleClose} />
       </Header>
       {currentQuizQuestion && (
         <QuizQuestionComponent

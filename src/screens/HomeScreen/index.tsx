@@ -36,7 +36,7 @@ const HomeScreen = () => {
           estimatedItemSize={200}
         />
       )}
-      <StartNewQuizButton onPress={() => navigation.navigate('QuizScreen')}>
+      <StartNewQuizButton onPress={() => navigation.navigate('QuizModal')}>
         <Entypo name="plus" size={32} color="white" />
       </StartNewQuizButton>
     </Container>

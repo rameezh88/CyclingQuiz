@@ -1,12 +1,12 @@
-import React from 'react';
-import HomeScreen from '../screens/HomeScreen';
 import {createStackNavigator} from '@react-navigation/stack';
-import QuizScreen from '../screens/QuizScreen';
+import React from 'react';
 import {colors} from '../constants/colors';
+import HomeScreen from '../screens/HomeScreen';
+import QuizModalNavigator from './QuizModalNavigator';
 
 export type RootStackParamList = {
   HomeScreen: undefined;
-  QuizScreen: undefined;
+  QuizModal: undefined;
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
@@ -29,14 +29,11 @@ const RootNavigator = () => {
         }}
       />
       <RootStack.Screen
-        name="QuizScreen"
-        component={QuizScreen}
+        name="QuizModal"
+        component={QuizModalNavigator}
         options={{
-          presentation: 'modal',
           headerShown: false,
-          cardStyle: {
-            backgroundColor: 'white',
-          },
+          presentation: 'modal',
         }}
       />
     </RootStack.Navigator>
