@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {QuizResults} from '../../../common/types';
 
-interface QuizState {
+export interface QuizState {
   attempts: QuizResults[];
 }
 
