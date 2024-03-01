@@ -7,6 +7,7 @@ import {selectAllServices} from '../redux/reducers/gbfs/selectors';
 const useGetQuizQuestion = () => {
   const [currentQuizQuestion, setCurrentQuizQuestion] =
     useState<QuizQuestion | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const allGbfsServices = useSelector(selectAllServices);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const useGetQuizQuestion = () => {
   }, [allGbfsServices]);
 
   const getNextQuestion = () => {
+    setIsLoading(true);
     const {
       text,
       options,
@@ -22,10 +24,12 @@ const useGetQuizQuestion = () => {
 
     generateQuestion({text, options}, allGbfsServices).then(question => {
       setCurrentQuizQuestion(question);
+      setIsLoading(false);
     });
   };
 
   return {
+    isLoading,
     getNextQuestion,
     currentQuizQuestion,
   };

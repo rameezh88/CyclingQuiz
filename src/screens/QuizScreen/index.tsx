@@ -10,7 +10,7 @@ import QuizQuestionComponent from '../../components/QuizQuestion';
 import useGetQuizQuestion from '../../hooks/useGetQuizQuestion';
 import {addAttempt} from '../../redux/reducers/quiz';
 import {quizResultsReducer} from './reducer';
-import {Container} from './styles';
+import {Container, LoadingText, TopContainer} from './styles';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
@@ -22,7 +22,11 @@ const QuizScreen = () => {
     answeredQuestions: [],
   });
 
-  const {currentQuizQuestion, getNextQuestion} = useGetQuizQuestion();
+  const {
+    currentQuizQuestion,
+    getNextQuestion,
+    isLoading: isQuestionLoading,
+  } = useGetQuizQuestion();
 
   useEffect(() => {
     getNextQuestion();
@@ -95,12 +99,15 @@ const QuizScreen = () => {
         </HeaderLeftContainer>
         <CloseButton handleClose={handleClose} />
       </Header>
-      {currentQuizQuestion && (
-        <QuizQuestionComponent
-          quizQuestion={currentQuizQuestion}
-          onAnswerSelected={onAnswerSelected}
-        />
-      )}
+      <TopContainer>
+        {isQuestionLoading && <LoadingText>Loading question...</LoadingText>}
+        {currentQuizQuestion && !isQuestionLoading && (
+          <QuizQuestionComponent
+            quizQuestion={currentQuizQuestion}
+            onAnswerSelected={onAnswerSelected}
+          />
+        )}
+      </TopContainer>
     </Container>
   );
 };
