@@ -16,7 +16,7 @@ export function getRandomSubset<T>(array: T[]): T[] {
 
   const copyArray = array.slice();
 
-  const subsetLength = Math.floor(Math.random() * (array.length + 1));
+  const subsetLength = Math.floor(Math.random() * (array.length + 1)) || 1;
 
   for (let i = 0; i < subsetLength; i++) {
     const randomIndex = Math.floor(Math.random() * copyArray.length);

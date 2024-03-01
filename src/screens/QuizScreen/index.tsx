@@ -31,8 +31,6 @@ const QuizScreen = () => {
   } = useGetQuizQuestion();
 
   useEffect(() => {
-    getNextQuestion();
-
     const timer = setInterval(() => {
       setSeconds(prevSeconds => {
         if (prevSeconds > 0) {

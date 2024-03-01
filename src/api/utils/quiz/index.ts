@@ -13,11 +13,11 @@ import {QuizQuestionGenerator} from './types';
 // - On an average, what is the distance between stations in `area_name`?
 
 export const quizQuestionGeneratorTemplates: Array<QuizQuestionGenerator> = [
-  // {
-  //   text: 'How many total bikes are available to rent in the following cities right now: {{cities}}?',
-  //   options: ['cities'],
-  //   quizQuestionGeneratorFunction: generateNumberOfBikesQuestion,
-  // },
+  {
+    text: 'How many total bikes are available to rent in the following cities right now: {{cities}}?',
+    options: ['cities'],
+    quizQuestionGeneratorFunction: generateNumberOfBikesQuestion,
+  },
   {
     text: 'How many bikes in the following cities are disabled: {{cities}}?',
     options: ['cities'],
@@ -29,6 +29,7 @@ export function getRandomQuizGenerator() {
   const randomIndex = Math.floor(
     Math.random() * quizQuestionGeneratorTemplates.length,
   );
+  // console.log('Getting for index ' + randomIndex);
   return quizQuestionGeneratorTemplates[randomIndex];
 }
 
