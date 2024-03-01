@@ -5,14 +5,14 @@ import {useSelector} from 'react-redux';
 import useFetchGBFSData from '../../api/hooks/useFetchGBFSData';
 import {selectQuizAttempts} from '../../redux/reducers/quiz/selectors';
 import {Container, Placeholder, StartNewQuizButton} from './styles';
+import QuizAttemptListItem from '../../components/QuizAttemptListItem';
+import {FlashList} from '@shopify/flash-list';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const attempts = useSelector(selectQuizAttempts);
 
   useFetchGBFSData();
-
-  console.log('Attempts', JSON.stringify(attempts));
 
   return (
     <Container>
@@ -23,7 +23,19 @@ const HomeScreen = () => {
             {`This is where your quiz attempts are shown.\n\nClick on the button below to start a new quiz!`}{' '}
           </Placeholder>
         ))}
-      {/* Add symptom button that navigates to the symptom-tracker modal */}
+      {attempts && (
+        <FlashList
+          data={attempts}
+          renderItem={({item, index}) => (
+            <QuizAttemptListItem
+              key={item.id}
+              quizAttempt={item}
+              index={index}
+            />
+          )}
+          estimatedItemSize={200}
+        />
+      )}
       <StartNewQuizButton onPress={() => navigation.navigate('QuizScreen')}>
         <Entypo name="plus" size={32} color="white" />
       </StartNewQuizButton>

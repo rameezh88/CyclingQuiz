@@ -31,6 +31,7 @@ export interface QuizResultItem {
 }
 
 export interface QuizResults {
+  id: string;
   points: number;
   won: boolean;
   answeredQuestions: QuizResultItem[];

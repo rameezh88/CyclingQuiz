@@ -9,6 +9,7 @@ import {quizResultsReducer} from './reducer';
 import {CloseButton, Container, Header, HeaderLeftContainer} from './styles';
 import {useDispatch} from 'react-redux';
 import {addAttempt} from '../../redux/reducers/quiz';
+import {makeId} from '../../api/utils';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
@@ -49,6 +50,7 @@ const QuizScreen = () => {
       dispatch(
         addAttempt({
           ...quizResults,
+          id: makeId(5),
           won: quizResults.points >= 0,
         }),
       );
