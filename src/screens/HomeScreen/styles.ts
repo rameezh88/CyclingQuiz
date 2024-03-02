@@ -3,7 +3,9 @@ import {colors} from '../../constants/colors';
 
 export const Container = styled.View`
   flex: 1;
+  flex-direction: row;
   justify-content: center;
+  align-content: center;
 `;
 
 export const Placeholder = styled.Text`

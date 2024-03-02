@@ -13,3 +13,15 @@ export const HeaderLeftContainer = styled.View`
   align-items: center;
   justify-content: start;
 `;
+
+export const Title = styled.Text`
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+export const Subtitle = styled.Text`
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
