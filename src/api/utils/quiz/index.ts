@@ -4,6 +4,7 @@ import generateDisabledBikesQuestion from './generateDisabledBikesQuestion';
 import generateNumberOfBikesQuestion from './generateNumberOfBikesQuestion';
 import {QuizQuestionGenerator} from './types';
 
+// Possible Questions:
 // - How many total rental bikes are available to rent in the following cities right now: `[city]`?
 // - How many bikes in the following cities are disabled: `[city]`?
 // - What is the average charge of all available bikes right now in the following cities: `[city]`?
@@ -15,12 +16,14 @@ import {QuizQuestionGenerator} from './types';
 export const quizQuestionGeneratorTemplates: Array<QuizQuestionGenerator> = [
   {
     text: 'How many total bikes are available to rent in the following cities right now: {{cities}}?',
-    options: ['cities'],
     quizQuestionGeneratorFunction: generateNumberOfBikesQuestion,
   },
   {
     text: 'How many bikes in the following cities are disabled: {{cities}}?',
-    options: ['cities'],
+    quizQuestionGeneratorFunction: generateDisabledBikesQuestion,
+  },
+  {
+    text: 'What is the average distance between free bikes in {{city}} right now?',
     quizQuestionGeneratorFunction: generateDisabledBikesQuestion,
   },
 ];

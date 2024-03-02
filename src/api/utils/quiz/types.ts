@@ -7,6 +7,5 @@ export type QuizQuestionGeneratorFunction = (
 
 export type QuizQuestionGenerator = {
   text: string;
-  options?: Array<'cities' | 'city' | 'batteryPercentage'>;
   quizQuestionGeneratorFunction: QuizQuestionGeneratorFunction;
 };

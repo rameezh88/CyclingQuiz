@@ -17,14 +17,11 @@ const useGetQuizQuestion = () => {
   const getNextQuestion = () => {
     // console.log('getNextQuestion');
     setIsLoading(true);
-    const {
-      text,
-      options,
-      quizQuestionGeneratorFunction: generateQuestion,
-    } = getRandomQuizGenerator();
+    const {text, quizQuestionGeneratorFunction: generateQuestion} =
+      getRandomQuizGenerator();
 
     if (allGbfsServices) {
-      generateQuestion({text, options}, allGbfsServices).then(question => {
+      generateQuestion({text}, allGbfsServices).then(question => {
         setCurrentQuizQuestion(question);
         setIsLoading(false);
       });
