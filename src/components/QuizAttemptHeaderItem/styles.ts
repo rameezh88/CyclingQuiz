@@ -29,7 +29,7 @@ export const ScoreText = styled.Text`
 `;
 
 export const ResultText = styled.Text`
-  align-self: start;
+  align-self: flex-start;
   font-size: 20px;
   font-weight: bold;
 `;

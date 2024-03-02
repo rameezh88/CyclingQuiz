@@ -1,5 +1,6 @@
 import {formatString, shuffleArray} from '..';
 import {QuizAnswer} from '../../../common/types';
+import generateAverageDistanceBetweenBikesQuestion from './generateAverageDistanceBetweenBikesQuestion';
 import generateDisabledBikesQuestion from './generateDisabledBikesQuestion';
 import generateNumberOfBikesQuestion from './generateNumberOfBikesQuestion';
 import {QuizQuestionGenerator} from './types';
@@ -13,7 +14,7 @@ import {QuizQuestionGenerator} from './types';
 // - How many more kilometers are the electric bikes currently capable of running in the following cities: `[city]`?
 // - On an average, what is the distance between stations in `area_name`?
 
-export const quizQuestionGeneratorTemplates: Array<QuizQuestionGenerator> = [
+const quizQuestionGeneratorTemplates: Array<QuizQuestionGenerator> = [
   {
     text: 'How many total bikes are available to rent in the following cities right now: {{cities}}?',
     quizQuestionGeneratorFunction: generateNumberOfBikesQuestion,
@@ -23,8 +24,8 @@ export const quizQuestionGeneratorTemplates: Array<QuizQuestionGenerator> = [
     quizQuestionGeneratorFunction: generateDisabledBikesQuestion,
   },
   {
-    text: 'What is the average distance between free bikes in {{city}} right now?',
-    quizQuestionGeneratorFunction: generateDisabledBikesQuestion,
+    text: 'What is the average distance between free bikes in {{city}} right now (in km)?',
+    quizQuestionGeneratorFunction: generateAverageDistanceBetweenBikesQuestion,
   },
 ];
 
@@ -32,20 +33,23 @@ export function getRandomQuizGenerator() {
   const randomIndex = Math.floor(
     Math.random() * quizQuestionGeneratorTemplates.length,
   );
-  // console.log('Getting for index ' + randomIndex);
   return quizQuestionGeneratorTemplates[randomIndex];
 }
 
 export function generateAnswers(baseNumber: number) {
-  const answers: QuizAnswer[] = [{answer: baseNumber, correct: true}];
-
-  // Generate 3 random numbers based on the baseNumber
-  for (let i = 0; i < 3; i++) {
-    const randomNumber = Math.floor(Math.random() * baseNumber * 2); // Adjust the range as needed
-    answers.push({
-      answer: randomNumber,
-      correct: false,
-    });
+  const answers: QuizAnswer[] = [
+    {answer: Math.floor(baseNumber), correct: true},
+  ];
+  let i = 0;
+  while (i < 3) {
+    const randomNumber = Math.floor(Math.random() * baseNumber * 2);
+    if (!answers.some(answer => answer.answer === randomNumber)) {
+      answers.push({
+        answer: randomNumber,
+        correct: false,
+      });
+      i += 1;
+    }
   }
 
   return shuffleArray(answers);
