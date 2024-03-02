@@ -1,7 +1,7 @@
 import React, {memo, useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {QuizAnswer, QuizQuestion} from '../../common/types';
-import {AnswerContainer, AnswerText, Container, QuestionText} from './styles';
+import {Container, QuestionText, AnswerContainer, AnswerText} from './styles';
 
 interface QuizQuestionProps {
   quizQuestion: QuizQuestion;
