@@ -4,16 +4,19 @@ import {FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE} from 'redux-persist';
 import persistReducer from 'redux-persist/es/persistReducer';
 import gbfs from './reducers/gbfs';
 import quiz from './reducers/quiz';
+import user from './reducers/user';
+import userListenerMiddleware from './reducers/user/middlewares';
 
 const createDebugger = require('redux-flipper').default;
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  safelist: ['quiz'],
+  safelist: ['quiz', 'user'],
 };
 
 const rootReducer = combineReducers({
+  user,
   gbfs,
   quiz,
 });
@@ -28,7 +31,9 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(createDebugger()),
+    })
+      .prepend(userListenerMiddleware.middleware)
+      .concat(createDebugger()),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

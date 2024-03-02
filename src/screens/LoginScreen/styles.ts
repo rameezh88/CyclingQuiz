@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import {colors} from '../../constants/colors';
 import {Title} from '../../common/styles';
+import {TextInput} from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -15,7 +16,7 @@ export const LoginTitle = styled(Title)`
   text-align: center;
 `;
 
-export const TextInput = styled.TextInput`
+export const CustomTextInput = styled(TextInput)`
   height: 45px;
   width: 80%;
   border: 1px solid gray;
