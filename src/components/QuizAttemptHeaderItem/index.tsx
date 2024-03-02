@@ -9,9 +9,8 @@ import {
   RetakeQuizButtonText,
   ScoreContainer,
   ScoreText,
-  Subtitle,
-  Title,
 } from './styles';
+import {Subtitle, Title} from '../../common/styles';
 
 interface QuizAttemptHeaderItemProps {
   quizAttempt: QuizResults;

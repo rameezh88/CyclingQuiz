@@ -7,8 +7,8 @@ import {
   ResultText,
   ScoreContainer,
   ScoreText,
-  Title,
 } from './styles';
+import {Title} from '../../common/styles';
 
 const QuizAttemptListItem = ({
   quizAttempt,
