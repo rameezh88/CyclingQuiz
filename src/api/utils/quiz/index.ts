@@ -42,7 +42,7 @@ export function generateAnswers(baseNumber: number) {
   ];
   let i = 0;
   while (i < 3) {
-    const randomNumber = Math.floor(Math.random() * baseNumber * 2);
+    const randomNumber = Math.floor(Math.random() * baseNumber * 4);
     if (!answers.some(answer => answer.answer === randomNumber)) {
       answers.push({
         answer: randomNumber,

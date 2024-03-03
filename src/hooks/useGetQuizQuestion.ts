@@ -15,7 +15,6 @@ const useGetQuizQuestion = () => {
   }, []);
 
   const getNextQuestion = () => {
-    // console.log('getNextQuestion');
     setIsLoading(true);
     const {text, quizQuestionGeneratorFunction: generateQuestion} =
       getRandomQuizGenerator();
