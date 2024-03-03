@@ -22,6 +22,8 @@ npm start
 yarn start
 ```
 
+**Note**: You will need to install `JDK` 17 if you don't have it already installed. You can do so by following the instructions [here](https://www.codejava.net/java-se/install-oracle-jdk-17-on-macos), or by looking up similar guides online.
+
 ## Step 2: Start your Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
@@ -38,7 +40,7 @@ yarn android
 yarn ios
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly. Therefore, please make sure that you have the iOS simulator and Android Emulator installed on your system.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
