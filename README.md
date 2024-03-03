@@ -50,9 +50,13 @@ The app is structured as follows:
 
 A dummy login page that takes a username and password, and lets you in to the app. These credentials are just stored in the `Redux` store for now and is used to determine the entry point for the navigator. `LoginPage` if logged out, and `HomePage` if logged in.
 
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-03 at 16 10 25](https://github.com/rameezh88/CyclingQuiz/assets/2458559/f576a292-874b-4bcd-a3ae-82f4b55a0c96)
+
 2. ## Home page
 
 Shows a list of quiz attempts. Is empty at first. You can start a new quiz using the button at the bottom.
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-03 at 16 10 32](https://github.com/rameezh88/CyclingQuiz/assets/2458559/4e25ea5a-146c-409a-9215-ff6ea2d5e19f)
 
 3. ## Quiz Screen
 
@@ -60,11 +64,19 @@ Shows a list of quiz attempts. Is empty at first. You can start a new quiz using
 - Points are calculated based on the answers. They are shown in the header area.
 - Shows a countount of one minute, after which the quiz is ended and you're taken to the `QuizDoneScreen`.
 
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-03 at 16 10 43](https://github.com/rameezh88/CyclingQuiz/assets/2458559/f8f81e8d-3675-4917-827f-8d9145eb104c)
+
 4. ## Quiz Done Screen
 
 - Shows the result of the last attempt on the top.
 - Has a button to retake the quiz, which basically starts a new attempt.
 - List all past attempts too.
+
+![Simulator Screenshot - iPhone SE (3rd generation) - 2024-03-03 at 16 11 45](https://github.com/rameezh88/CyclingQuiz/assets/2458559/c81056af-1a8e-4e78-a503-ef513f2af90b)
+
+### Screen Recording:
+
+https://github.com/rameezh88/CyclingQuiz/assets/2458559/9f233925-c555-46be-a1ed-f052fcaaaa70
 
 # Key technologies used
 
